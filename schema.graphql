@@ -1,0 +1,103 @@
+type Comptroller @entity {
+    id: ID!
+    
+    "Address of price oracle the comptroller uses"
+    priceOracle: Bytes
+    
+    "Factor used to determine repayAmount for liquidating"
+    closeFactor: BigInt
+}
+
+type Market @entity {
+   
+    "Collateral factor determining how much one can borrow"
+    collateralFactor: BigDecimal!
+    
+    " Token symbol"
+    symbol: String!
+    
+    " Token address"
+    id: ID!
+    
+    " Total value locked in underlying token "
+    totalValueLocked: BigDecimal!
+    
+     " Total value locked in USD "
+    totalValueLockedUSD: BigDecimal!
+    
+    " Yearly supply rate in underlying token "
+    supplyRate: BigDecimal!
+    
+     " Yearly supply rate in DeFiner FIN token "
+    supplyRateFIN: BigDecimal!
+    
+    " Yearly borrow rate in underlying token "
+    borrowRate: BigDecimal!
+    
+    " Yearly supply rate in DeFiner FIN token on borrowing "
+    supplyBorrowRateFIN: BigDecimal!
+    
+    " Deposit market size in underlying token "
+    depositMarketSize: BigDecimal!
+    
+    " Deposit market size in USD "
+    depositMarketSizeUSD: BigDecimal!
+    
+    " Borrow market size in underlying token "
+    borrowMarketSize: BigDecimal!
+    
+    " Borrow market size in USD "
+    borrowMarketSizeUSD: BigDecimal!
+    
+    "Underlying token address"
+    underlyingAddress: Bytes!
+    
+    "Underlying token name"
+    underlyingName: String!
+    
+    "Underlying token symbol"
+    underlyingSymbol: String!
+
+    "Block the market is updated to"
+    accrualBlockNumber: Int!
+    
+    "Timestamp the market was most recently updated"
+    blockTimestamp: Int!
+    
+    "Underlying token price in USD"
+    underlyingPriceUSD: BigDecimal!
+    
+    "Underlying token decimal length"
+    underlyingDecimals: Int!
+}
+
+type Swap @entity {
+    id: ID!
+    
+    " User address who initiates swap "
+    caller: Bytes!
+    
+    " Token being swapped contract address "
+    tokenIn: Bytes!
+    
+    " Token being swapped symbol "
+    tokenInSymbol: String!
+    
+    " Token being swapped to contract address "
+    tokenOut: Bytes!
+    
+    " Token being swapped to symbol "
+    tokenOutSymbol: String!
+    
+    " Total amount of tokens being swapped "
+    tokenAmountIn: BigDecimal!
+    
+    " Total amount of tokens being swapped to "
+    tokenAmountOut: BigDecimal!
+    
+     " Liquidity Provider Fee in ETH"
+     fee: BigDecimal!
+    
+    " Timestamp of swap "
+    timestamp: Int!
+}
